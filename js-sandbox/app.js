@@ -123,11 +123,120 @@ console.log(val);
 
 
 // 26. Creating Elements
-
+/*
 //Create Element
 const li = document.createElement('li');
 
 //Add class
 li.className = 'collection-item';
 
+//Add attribute
+li.setAttribute('title', 'New Item');
+
+//Create text node and append
+li.appendChild(document.createTextNode('Hello World'));
+
+const link = document.createElement('a');
+link.className = 'delete-item secondary-content';
+link.innerHTML = '<i class="fa fa-remove"></i>';
+
+li.appendChild(link);
+//Append li as child of ul
+document.querySelector('ul.collection').appendChild(li);
+
 console.log(li);
+*/
+
+
+// 27. Removing & Replacing Elements
+/*
+const newHeading = document.createElement('h2');
+newHeading.id = 'task-title';
+newHeading.appendChild(document.createTextNode('Task List'));
+
+const oldHeading = document.getElementById('task-title');
+//Parent
+const cardAction = document.querySelector('.card-action');
+cardAction.replaceChild(newHeading, oldHeading);
+
+const lis = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+lis[0].remove();
+list.removeChild(lis[3]);
+
+const firstLi = document.querySelector('li:first-child');
+const link = firstLi.children[0];
+
+let val;
+
+val = link.className;
+val = link.classList;
+link.classList.add('test');
+link.classList.remove('test');
+val = link;
+val = link.getAttribute('href');
+val = link.setAttribute('href', 'http://google.com');
+
+
+console.log(val);
+*/
+
+
+// 28. Event Listeners & The Event Object
+/*
+document.querySelector('.clear-tasks').addEventListener('click', onClick);
+
+function onClick(e){
+  // console.log('Clicked');
+
+  let val;
+
+  val = e.target;
+  // e.target.innerText = 'Hello';
+  val = e.type;
+  val = e.clientY;
+
+  console.log(val);
+}
+*/
+
+
+// 29. Mouse Events
+/*
+const clearBtn = document.querySelector('.clear-tasks');
+const card = document.querySelector('.card');
+const heading = document.querySelector('#task-title');
+
+// clearBtn.addEventListener('click', runEvent);
+// clearBtn.addEventListener('dblclick', runEvent);
+// clearBtn.addEventListener('mousedown', runEvent);
+// clearBtn.addEventListener('mouseup', runEvent);
+// clearBtn.addEventListener('mouseenter', runEvent);
+// card.addEventListener('mouseleave', runEvent);
+// card.addEventListener('mouseover', runEvent);
+// card.addEventListener('mouseout', runEvent);
+card.addEventListener('mousemove', runEvent);
+
+function runEvent(e){
+  // console.log(`EVENT TYPE: ${e.type}`);
+  heading.textContent = `MouseX: ${e.offsetX} MouseY: ${e.offsetY}`;
+  document.body.style.backgroundColor = `rgb(${e.offsetX}, ${e.offsetY}, 40)`;
+}
+
+*/
+
+
+//30. Keyboard & Input Events
+const form = document.querySelector('form');
+const taskInput = document.getElementById('task');
+
+form.addEventListener('submit', runEvent);
+
+function runEvent(e){
+  console.log(`EVENT TYPE: ${e.type}`);
+
+  console.log(taskInput.value);
+
+  e.preventDefault();
+}
