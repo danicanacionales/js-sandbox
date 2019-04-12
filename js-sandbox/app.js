@@ -227,16 +227,60 @@ function runEvent(e){
 */
 
 
-//30. Keyboard & Input Events
+// 30. Keyboard & Input Events
+/*
 const form = document.querySelector('form');
 const taskInput = document.getElementById('task');
+const heading = document.querySelector('h5');
+const select = document.querySelector('select');
 
-form.addEventListener('submit', runEvent);
+taskInput.value = '';
+
+// form.addEventListener('submit', runEvent);
+
+// taskInput.addEventListener('keydown', runEvent);
+// taskInput.addEventListener('cut', runEvent);
+// taskInput.addEventListener('paste', runEvent);
+select.addEventListener('change', runEvent);
 
 function runEvent(e){
   console.log(`EVENT TYPE: ${e.type}`);
+  // heading.innerText = e.target.value;
+  console.log(e.target.value);
+  // console.log(taskInput.value);
 
-  console.log(taskInput.value);
+  // e.preventDefault();
+}
+*/
 
-  e.preventDefault();
+
+// 31. Event Bubbling & Delegation
+
+// // Event Bubbling
+// document.querySelector('.card-title').addEventListener('click', 
+//   function(){
+//     console.log('card title');
+// });
+
+// document.querySelector('.card-content').addEventListener('click',
+//   function(){
+//     console.log('card content');
+// });
+
+// document.querySelector('.card').addEventListener('click',
+//   function(){
+//     console.log('card');
+// });
+
+// document.querySelector('.col').addEventListener('click',
+//   function(){
+//     console.log('col');
+// });
+
+// Event Delegation
+const delItem = document.querySelector('.delete-item');
+delItem.addEventListener('click', deleteItem);
+
+function deleteItem(){
+  console.log('delete item');
 }
