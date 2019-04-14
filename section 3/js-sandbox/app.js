@@ -256,31 +256,87 @@ function runEvent(e){
 
 // 31. Event Bubbling & Delegation
 
-// // Event Bubbling
-// document.querySelector('.card-title').addEventListener('click', 
-//   function(){
-//     console.log('card title');
-// });
+/*
+// Event Bubbling
+document.querySelector('.card-title').addEventListener('click', 
+  function(){
+    console.log('card title');
+});
 
-// document.querySelector('.card-content').addEventListener('click',
-//   function(){
-//     console.log('card content');
-// });
+document.querySelector('.card-content').addEventListener('click',
+  function(){
+    console.log('card content');
+});
 
-// document.querySelector('.card').addEventListener('click',
-//   function(){
-//     console.log('card');
-// });
+document.querySelector('.card').addEventListener('click',
+  function(){
+    console.log('card');
+});
 
-// document.querySelector('.col').addEventListener('click',
-//   function(){
-//     console.log('col');
-// });
+document.querySelector('.col').addEventListener('click',
+  function(){
+    console.log('col');
+});
 
 // Event Delegation
 const delItem = document.querySelector('.delete-item');
 delItem.addEventListener('click', deleteItem);
 
-function deleteItem(){
-  console.log('delete item');
+document.body.addEventListener('click', deleteItem); 
+
+function deleteItem(e){
+  // if(e.target.parentElement.className === 'delete-item secondary-content'){
+  //   console.log('delete item'); 
+  // }
+
+  if(e.target.parentElement.classList.contains('delete-item')){
+    console.log('delete item'); 
+    e.target.parentElement.parentElement.remove();
+  }
 }
+*/
+
+
+// 32. Local & Session Storage
+//Set local storage item
+
+// localStorage.setItem('name', 'John');
+// localStorage.setItem('age', '30');
+
+//remove from storage
+// localStorage.removeItem('name');
+
+// //get from storage
+// const name = localStorage.getItem('name');
+// const name2 = localStorage.getItem('age');
+
+// localStorage.clear();
+// console.log(name, name2);
+
+document.querySelector('form').addEventListener('submit', 
+  function(e){
+    const task = document.getElementById('task').value;
+    // localStorage.setItem('task', task);
+    // alert('Task saved');
+
+    let tasks;
+
+    if(localStorage.getItem('tasks') === null){
+      tasks = [];
+    }else{
+      tasks = JSON.parse(localStorage.getItem('tasks'));
+    }
+
+    tasks.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    alert('Task saved');
+
+    e.preventDefault();
+});
+
+const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+tasks.forEach(function(task){
+  console.log(task);
+})
