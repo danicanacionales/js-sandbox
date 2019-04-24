@@ -41,7 +41,13 @@ UI.prototype.showAlert = function(message, type){
     setTimeout(clearError, 3000);
 }
 
-
+UI.prototype.deleteBook = function(target){
+    if(target.className === 'delete'){
+        if(confirm('Are you sure?')){
+            target.parentElement.parentElement.remove();
+        }
+    }
+}
 
 function clearError(){
     document.querySelector('.alert').remove();
@@ -84,11 +90,10 @@ UIform.addEventListener('submit', function(e){
 });
 
 UItbody.addEventListener('click', function(e){
-    if(e.target.classList.contains('delete')){
-        if(confirm('Are you sure?')){
-            e.target.parentElement.parentElement.remove();
-        }
-    }
+    const ui = new UI();
+
+    ui.deleteBook(e.target);
+    ui.showAlert('Book Removed', 'info');
     e.preventDefault();
 });
 
