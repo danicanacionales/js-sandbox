@@ -32,11 +32,7 @@ UI.prototype.clearFields = function(){
 
 UI.prototype.showAlert = function(message, type){
     const alertDiv = document.createElement('div');
-    if(type === 'error'){
-        alertDiv.className = 'alert alert-danger';
-    }else if(type === 'info'){
-        alertDiv.className = 'alert alert-success';
-    }
+    alertDiv.className = `alert alert-${type}`;
 
     alertDiv.appendChild(document.createTextNode(message));
 
@@ -44,6 +40,8 @@ UI.prototype.showAlert = function(message, type){
     card.insertBefore(alertDiv, UIform);
     setTimeout(clearError, 3000);
 }
+
+
 
 function clearError(){
     document.querySelector('.alert').remove();
@@ -73,15 +71,24 @@ UIform.addEventListener('submit', function(e){
 
     //validate
     if(title === '' || author === '' || isbn === ''){
-        ui.showAlert('Please fill in all fields', 'error');
+        ui.showAlert('Please fill in all fields', 'danger');
     } else{
         ui.addBookToList(book);
         ui.clearFields();
-        ui.showAlert('Book inserted', 'info');
+        ui.showAlert('Book inserted', 'success');
     }
     // UItbody.appendChild(tableRow); 
 
     // console.log(books);
+    e.preventDefault();
+});
+
+UItbody.addEventListener('click', function(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are you sure?')){
+            e.target.parentElement.parentElement.remove();
+        }
+    }
     e.preventDefault();
 });
 
