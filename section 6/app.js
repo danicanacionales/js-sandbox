@@ -30,6 +30,25 @@ UI.prototype.clearFields = function(){
     UIisbn.value = '';
 }
 
+UI.prototype.showAlert = function(message, type){
+    const alertDiv = document.createElement('div');
+    if(type === 'error'){
+        alertDiv.className = 'alert alert-danger';
+    }else if(type === 'info'){
+        alertDiv.className = 'alert alert-success';
+    }
+
+    alertDiv.appendChild(document.createTextNode(message));
+
+    const card = document.querySelector('.card');
+    card.insertBefore(alertDiv, UIform);
+    setTimeout(clearError, 3000);
+}
+
+function clearError(){
+    document.querySelector('.alert').remove();
+}
+
 let books = new Array();
 
 loadBooks();
@@ -51,9 +70,16 @@ UIform.addEventListener('submit', function(e){
 
     // const tableRow = createTableRow(book);
     const ui = new UI();
-    ui.addBookToList(book);
-    ui.clearFields();
-    // UItbody.appendChild(tableRow);
+
+    //validate
+    if(title === '' || author === '' || isbn === ''){
+        ui.showAlert('Please fill in all fields', 'error');
+    } else{
+        ui.addBookToList(book);
+        ui.clearFields();
+        ui.showAlert('Book inserted', 'info');
+    }
+    // UItbody.appendChild(tableRow); 
 
     // console.log(books);
     e.preventDefault();
