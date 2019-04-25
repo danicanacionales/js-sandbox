@@ -38,7 +38,9 @@ UI.prototype.showAlert = function(message, type){
 
     const card = document.querySelector('.card');
     card.insertBefore(alertDiv, UIform);
-    setTimeout(clearError, 3000);
+    setTimeout(function(){
+        document.querySelector('.alert').remove();
+    }, 3000);
 }
 
 UI.prototype.deleteBook = function(target){
@@ -47,10 +49,6 @@ UI.prototype.deleteBook = function(target){
             target.parentElement.parentElement.remove();
         }
     }
-}
-
-function clearError(){
-    document.querySelector('.alert').remove();
 }
 
 let books = new Array();
