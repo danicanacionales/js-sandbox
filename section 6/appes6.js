@@ -99,9 +99,6 @@ UIform.addEventListener('submit', function(e){
     const isbn = UIisbn.value;
 
     const book = new Book(title, author, isbn);
-    // books.push(book);
-
-    // const tableRow = createTableRow(book);
     const ui = new UI();
 
     //validate
@@ -113,9 +110,6 @@ UIform.addEventListener('submit', function(e){
         ui.clearFields();
         ui.showAlert('Book inserted', 'success');
     }
-    // UItbody.appendChild(tableRow); 
-
-    // console.log(books);
     e.preventDefault();
 });
 

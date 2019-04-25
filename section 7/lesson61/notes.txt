@@ -1,0 +1,15 @@
+What is an API?
+- Application Programming Interface
+- Structured request and response
+- messenger
+
+REST APIs
+- Architectural style for designing networked applications
+- Treats server objects as resources that can be created or destroyed
+- Relies on a stateless, client-server protocol
+
+HTTP Requests
+- GET
+- POST
+- PUT - update a specified resource
+- DELETE
