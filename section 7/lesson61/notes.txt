@@ -3,7 +3,7 @@ What is an API?
 - Structured request and response
 - messenger
 
-REST APIs
+REST APIs 
 - Architectural style for designing networked applications
 - Treats server objects as resources that can be created or destroyed
 - Relies on a stateless, client-server protocol
@@ -13,3 +13,5 @@ HTTP Requests
 - POST
 - PUT - update a specified resource
 - DELETE
+
+Callback - a function that is passed in as a parameter of another function
