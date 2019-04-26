@@ -44,10 +44,10 @@ const data = {
 
 
 //DELETE Request
-http.delete('http://jsonplaceholder.typicode.com/posts/1', function(err, posts){
+http.delete('http://jsonplaceholder.typicode.com/posts/1', function(err, response){
     if(err){
         console.log(err);
     }else{
-        console.log(posts);
+        console.log(response);
     }
 });
