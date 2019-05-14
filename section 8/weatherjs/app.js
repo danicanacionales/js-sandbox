@@ -17,8 +17,12 @@ document.getElementById('w-change-btn').addEventListener('click', function(e){
     const cityName = document.getElementById('city').value;
     const countryCode = document.getElementById('country-code').value;
 
-    weather.changeLocation(cityName, countryCode);
-    getWeather();
-
-    $('#loc-modal').modal('hide');
+    if(cityName === '' || countryCode === ''){
+        ui.showAlert('<strong>Oh no!</strong> Please enter valid inputs.', 'alert alert-danger');
+    } else {
+        weather.changeLocation(cityName, countryCode);
+        getWeather();
+    
+        $('#loc-modal').modal('hide');
+    }
 });

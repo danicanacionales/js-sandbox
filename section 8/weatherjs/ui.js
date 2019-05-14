@@ -20,4 +20,26 @@ class UI {
         this.feelsLike.textContent = `Maximum Temperature: ${weather.main.temp_max}`;
         this.wind.textContent = `Minimum Temperature: ${weather.main.temp_min}`;
     }
+
+    showAlert(message, className){
+        this.clearAlert();
+        const div = document.createElement('div');
+        div.className = className;
+        div.innerHTML = message;
+        
+        const container = document.querySelector('#w-form');
+        const form = document.querySelector('.city-form');
+        container.insertBefore(div, form);
+
+        setTimeout(() => {
+            this.clearAlert();
+        }, 3000);
+    }
+
+    clearAlert(){
+        const currentAlert = document.querySelector('.alert');
+        if(currentAlert){
+            currentAlert.remove();
+        }
+    }
 }
