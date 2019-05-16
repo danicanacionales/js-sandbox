@@ -26,6 +26,6 @@ class Weather {
     changeLocation(cityName, countryCode){
         this.cityName = cityName;
         this.countryCode = countryCode;
-        console.log(`change ${this.cityName}`);
+        storage.setLocationData(cityName, countryCode);
     }
 }

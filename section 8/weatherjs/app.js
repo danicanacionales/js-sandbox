@@ -1,4 +1,7 @@
-const weather = new Weather('Tokyo', 'jp');
+const storage = new Storage();
+const weatherLocation = storage.getLocationData();
+
+const weather = new Weather(weatherLocation.city, weatherLocation.countryCode);
 const ui = new UI();
 
 document.addEventListener('DOMContentLoaded', getWeather);
